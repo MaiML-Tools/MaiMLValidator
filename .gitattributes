@@ -24,6 +24,10 @@
 *.xml    -text
 *.xsd    -text
 
+# Studio のプロジェクトファイル。人が書く文章ではなくツールが書き出すものなので、
+# こちらも変換せずそのまま保つ
+*.json   -text
+
 # バイナリ。変換もテキスト差分も行わない
 *.zip    binary
 *.xlsx   binary
