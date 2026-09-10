@@ -8,6 +8,10 @@
 
 Open the HTML file in Chrome or Edge and it runs — no installation required. **The document and schema files you load are never uploaded anywhere.**
 
+<p align="center">
+  <a href="docs/Screenshot_valid.png"><img src="docs/Screenshot_valid.png" alt="A validation result in MaiML Validator (OK)" width="860"></a>
+</p>
+
 ---
 
 ## Highlights
@@ -29,10 +33,25 @@ Open the HTML file in Chrome or Edge and it runs — no installation required. *
 2. Open it directly in a browser (no server needed)
 3. Or serve it from any web server
 
+### Getting the schema (XSD)
+
+**The schema is not bundled with this tool.** The JIS K 0200 schema definition files are distributed on the MaiML site, which is run by JAIMA (Japan Analytical Instruments Manufacturers' Association).
+
+On the [English page of the MaiML site](https://www.maiml.org/index_en.html) the schema set is a direct download — **no registration is required**:
+
+- **[MaiML-Schema-1_0.zip](https://www.maiml.org/files/top_en/MaiML-Schema-1_0.zip)** (ZIP, 16 KB)
+
+Unzip it, then load all of the `.xsd` files into this tool in one go (see "Basic workflow" below). Do not include a second copy or an older revision of the same schema, though (see "Notes › Root schema resolution").
+
+The same page also offers the JIS K 0200 standard, the conformance guideline, and *Concept of MaiML* as PDFs.
+
+> 📌 **This is a different tool from the LINQPad-based schema check distributed on the same page.**
+> That page also offers `MaiML_Schema_Check_Manual.pdf` and `MaiMLChecker_LINQPad8.zip` — a schema-check procedure and script that run under LINQPad. MaiML Validator was developed independently of those: it validates with libxml2 (WebAssembly), entirely inside the browser, with nothing to install. You can use it instead of that script, but **the two use different validation engines, so their verdicts will not necessarily agree.**
+
 ### Basic workflow
 
 1. **Load the JIS K 0200 `.xsd` schema files**
-   Drag and drop, or choose files. **You can select every `.xsd` file in the schema set at once** — only the files actually referenced from the document you validate are used.
+   Drag and drop, or choose files. **Load the whole schema set — every `.xsd` file — in one go.** You do not have to work out which files are needed: only the files actually referenced from the document you validate are used, and the rest are ignored.
    Loaded schemas are cached in this browser (`localStorage`), so you do not need to reload them next time.
 2. **Load the `.maiml` or `.xml` document you want to validate**
 3. **Read the result**
@@ -47,6 +66,10 @@ Open the HTML file in Chrome or Edge and it runs — no installation required. *
 ---
 
 ## The three tiers
+
+<p align="center">
+  <a href="docs/Screenshot_invalid.png"><img src="docs/Screenshot_invalid.png" alt="Error report and source view in MaiML Validator" width="860"></a>
+</p>
 
 | Verdict | Meaning |
 |------|------|
